@@ -8,12 +8,22 @@
 - [~] — в процессе
 - [x] — завершено
 
+## Скиллы по типу задачи
+| Ситуация | Скилл |
+|----------|-------|
+| Любой UI/UX экран | `ui-ux-pro-max` → `frontend-design` |
+| Баг или неожиданное поведение | `superpowers:systematic-debugging` |
+| Перед коммитом | `superpowers:verification-before-completion` + `simplify` |
+| После завершения фазы | `superpowers:requesting-code-review` |
+| Планирование сложной фичи | `superpowers:brainstorming` → `superpowers:writing-plans` |
+
 ---
 
 ## Фаза 1: Фундамент
 
 ### Шаг 1 — Инициализация проекта
 **context7 перед стартом:** Next.js 16 (`/vercel/next.js`), Tailwind v4 (`/tailwindlabs/tailwindcss.com`), shadcn/ui (`/shadcn-ui/ui`)
+**скиллы:** `ui-ux-pro-max` (цветовая система, типографика, spacing) → `frontend-design` (globals.css, базовые стили)
 
 - [ ] `pnpm create next-app@latest . --typescript --tailwind --eslint --app --src-dir=no --import-alias="@/*"` (или аналог для Next.js 16)
 - [ ] Убедиться что в `package.json` стоит `next@^16`, не 15
@@ -106,6 +116,7 @@
 
 ### Шаг 3 — Auth flow и middleware
 **context7 перед стартом:** Supabase Auth (`/supabase/supabase`) — exchangeCodeForSession, OAuth, magic link
+**скиллы:** `ui-ux-pro-max` + `frontend-design` для login page (первое впечатление о продукте)
 
 - [ ] Создать `/app/login/page.tsx`:
   - Client Component (для кнопок и формы)
@@ -133,12 +144,19 @@
 
 **Критерий завершения:** middleware защищает dashboard, login page рендерится, auth callback обрабатывает code, первый проект создаётся автоматически.
 
+### ✦ После Фазы 1 → v0.2.0
+- [ ] Обновить `[Unreleased]` → `[0.2.0] - YYYY-MM-DD` в CHANGELOG.md
+- [ ] `git tag -a v0.2.0 -m "v0.2.0 — foundation"` && `git push origin main --tags`
+- [ ] Скилл `superpowers:requesting-code-review` — ревью фазы
+- [ ] Скилл `simplify` — упростить весь написанный код
+
 ---
 
 ## Фаза 2: Dashboard
 
 ### Шаг 4 — Layout дашборда
 **context7 перед стартом:** shadcn/ui (`/shadcn-ui/ui`) — sidebar, dropdown-menu, avatar
+**скиллы:** `ui-ux-pro-max` (sidebar layout, responsive, nav patterns) → `frontend-design` (компоненты)
 
 - [ ] Создать `/app/(dashboard)/layout.tsx` (Server Component):
   - Загрузка данных: user profile + subscription через Supabase server client
@@ -163,6 +181,8 @@
 ---
 
 ### Шаг 5 — Список проектов
+**скиллы:** `ui-ux-pro-max` + `frontend-design` (project cards, empty state, dialog)
+
 - [ ] Создать `/app/(dashboard)/projects/page.tsx` (Server Component):
   - Запрос: все проекты пользователя + count testimonials + count pending
   - Передача в клиентский компонент
@@ -185,6 +205,7 @@
 
 ### Шаг 6 — Управление отзывами
 **Next.js 16 напоминание:** `params` — Promise! `const { id } = await props.params;`
+**скиллы:** `ui-ux-pro-max` + `frontend-design` (testimonial cards, status badges, tabs)
 
 - [ ] Создать `/app/(dashboard)/projects/[id]/page.tsx` (Server Component):
   - `const { id } = await props.params` (Next.js 16!)
@@ -215,6 +236,7 @@
 
 ### Шаг 7 — Настройки проекта
 **Next.js 16 напоминание:** `params` — Promise!
+**скиллы:** `ui-ux-pro-max` + `frontend-design` (settings layout, widget style picker, color picker)
 
 - [ ] Создать `/app/(dashboard)/projects/[id]/settings/page.tsx`:
   - `const { id } = await props.params`
@@ -239,12 +261,19 @@
 
 **Критерий завершения:** все настройки сохраняются и применяются, embed code правильный, удаление с подтверждением.
 
+### ✦ После Фазы 2 → v0.3.0
+- [ ] Обновить CHANGELOG.md → `[0.3.0]`
+- [ ] `git tag -a v0.3.0 -m "v0.3.0 — dashboard"` && push
+- [ ] Скилл `superpowers:requesting-code-review`
+- [ ] Скилл `simplify`
+
 ---
 
 ## Фаза 3: Сбор отзывов
 
 ### Шаг 8 — Публичная форма
 **Next.js 16 напоминание:** `params` — Promise! `const { publicId } = await props.params;`
+**скиллы:** `ui-ux-pro-max` + `frontend-design` (публичная форма — первое впечатление клиента о бизнесе!)
 
 - [ ] Создать `/app/collect/[publicId]/page.tsx` (Server Component):
   - `const { publicId } = await props.params`
@@ -283,6 +312,12 @@
 
 **Критерий завершения:** анонимная форма работает, валидация отлавливает ошибки, лимит проверяется, thank you показывается.
 
+### ✦ После Фазы 3 → v0.4.0
+- [ ] Обновить CHANGELOG.md → `[0.4.0]`
+- [ ] `git tag -a v0.4.0 -m "v0.4.0 — testimonial collection"` && push
+- [ ] Скилл `superpowers:requesting-code-review`
+- [ ] Скилл `simplify`
+
 ---
 
 ## Фаза 4: Embed виджет
@@ -309,6 +344,8 @@
 ---
 
 ### Шаг 10 — Standalone виджет
+**скиллы:** `ui-ux-pro-max` (карточки, типографика виджета, стили всех 4 режимов) → `frontend-design` (генерация CSS-in-JS для Shadow DOM)
+
 - [ ] Создать `/public/embed/widget.js` — чистый vanilla JS, БЕЗ React, БЕЗ импортов:
   - `document.currentScript` → прочитать `data-project`
   - Определить base URL из `src` атрибута скрипта
@@ -334,6 +371,12 @@
 - [ ] `git add -A && git commit -m "feat: standalone embed widget"`
 
 **Критерий завершения:** виджет рендерится на внешнем сайте, 4 стиля работают, Shadow DOM изолирует стили, <15KB.
+
+### ✦ После Фазы 4 → v0.5.0
+- [ ] Обновить CHANGELOG.md → `[0.5.0]`
+- [ ] `git tag -a v0.5.0 -m "v0.5.0 — embed widget"` && push
+- [ ] Скилл `superpowers:requesting-code-review`
+- [ ] Скилл `simplify`
 
 ---
 
@@ -399,12 +442,19 @@
 
 **Критерий завершения:** все лимиты работают, upgrade prompt показывается, branding на free виджете.
 
+### ✦ После Фазы 5 → v0.6.0
+- [ ] Обновить CHANGELOG.md → `[0.6.0]`
+- [ ] `git tag -a v0.6.0 -m "v0.6.0 — payments"` && push
+- [ ] Скилл `superpowers:requesting-code-review`
+- [ ] Скилл `simplify`
+
 ---
 
 ## Фаза 6: Polish
 
 ### Шаг 13 — Landing page
 **context7 перед стартом:** Tailwind v4 (`/tailwindlabs/tailwindcss.com`) — animations, responsive
+**скиллы:** `ui-ux-pro-max` СНАЧАЛА (полный дизайн-план страницы) → `frontend-design` (реализация). Это витрина — качество критично.
 
 - [ ] Создать `/app/(marketing)/layout.tsx` — простой layout без sidebar, с header/footer
 - [ ] Создать `/app/(marketing)/page.tsx`:
@@ -456,6 +506,12 @@
 - [ ] `git add -A && git commit -m "fix: security review fixes"`
 
 **Критерий завершения:** все пункты security checklist пройдены, никаких утечек.
+
+### ✦ После Фазы 6 → v0.9.0 (pre-launch)
+- [ ] Обновить CHANGELOG.md → `[0.9.0]`
+- [ ] `git tag -a v0.9.0 -m "v0.9.0 — pre-launch"` && push
+- [ ] Скилл `superpowers:requesting-code-review` — финальный ревью всего проекта
+- [ ] Скилл `simplify` — финальная чистка кода
 
 ---
 

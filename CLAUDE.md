@@ -137,6 +137,40 @@ NEXT_PUBLIC_APP_URL=http://localhost:3000
 - Pro ($19/mo): unlimited projects, unlimited testimonials, no branding, video testimonials, custom colors
 - Business ($49/mo): everything in Pro + API access, priority support, custom domain for forms
 
+## Обязательные скиллы по типу задачи
+
+### Дизайн и UI/UX (ОБЯЗАТЕЛЬНО перед любым визуальным кодом)
+- **`ui-ux-pro-max`** — вызывай ПЕРЕД разработкой любого экрана, компонента или страницы.
+  Покрывает: выбор палитры, типографику, layout, spacing, accessibility, mobile-first.
+- **`frontend-design`** — вызывай при создании компонентов, страниц, виджетов.
+  Генерирует production-grade код с высоким дизайн-качеством, избегает generic AI-эстетики.
+
+Эти два скилла используются вместе: `ui-ux-pro-max` определяет дизайн-решения,
+`frontend-design` реализует их в коде.
+
+**Когда они нужны (полный список):**
+- Шаг 1: stартовая страница + globals.css (палитра, типографика)
+- Шаг 3: `/app/login/page.tsx`
+- Шаг 4: Dashboard layout + Sidebar
+- Шаг 5-7: все dashboard страницы
+- Шаг 8: `/app/collect/[publicId]` — публичная форма
+- Шаг 10: embed widget карточки и стили
+- Шаг 13: landing page (здесь особенно важно — это витрина продукта)
+
+### Отладка
+- **`superpowers:systematic-debugging`** — при любом баге, неожиданном поведении или ошибке теста.
+  Обязательно перед предложением фикса.
+
+### Завершение задач
+- **`superpowers:verification-before-completion`** — перед каждым коммитом и заявлением "готово".
+  Запускает проверочные команды и подтверждает вывод.
+
+### Code review
+- **`superpowers:requesting-code-review`** — после завершения каждой фазы (v0.2.0, v0.3.0, ...).
+
+### Упрощение кода
+- **`simplify`** — после завершения каждого шага, перед коммитом.
+
 ## Context7 — обязательная проверка документации
 
 **ПЕРЕД каждой сессией** проверяй актуальные API через context7 для библиотек этой сессии.
