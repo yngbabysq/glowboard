@@ -1,8 +1,26 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { TestimonialForm } from "@/components/collect/TestimonialForm";
 import { Sparkles } from "lucide-react";
 import Link from "next/link";
+
+export async function generateMetadata(props: {
+  params: Promise<{ publicId: string }>;
+}): Promise<Metadata> {
+  const { publicId } = await props.params;
+  const supabase = createAdminClient();
+  const { data: project } = await supabase
+    .from("projects")
+    .select("name")
+    .eq("public_id", publicId)
+    .single();
+
+  return {
+    title: project ? `Share your experience — ${project.name}` : "Share your experience",
+    description: "We'd love to hear your feedback. Leave a testimonial and help others discover us.",
+  };
+}
 
 export default async function CollectPage(props: {
   params: Promise<{ publicId: string }>;

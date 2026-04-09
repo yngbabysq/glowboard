@@ -13,11 +13,27 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-### Planned — Phase 6: Polish
-- Landing page
-- Loading / error / empty states
-- SEO metadata
-- Security hardening
+---
+
+## [0.9.0] - 2026-04-09
+
+### Added
+- Landing page with hero, features, pricing sections, and CTA
+- Marketing layout with sticky header and footer
+- Dashboard loading skeleton, error boundary, and 404 page
+- Marketing error boundary
+- SEO metadata on all pages (title templates, Open Graph descriptions)
+- `generateMetadata` for dynamic collect page with project name
+
+### Changed
+- Stripe client initialization made lazy to support build without env vars
+
+### Security
+- Verified all server keys are server-only (not in client bundles)
+- Verified Stripe webhook signature verification is in place
+- Verified Zod validation on all server actions
+- Verified CORS only on embed API endpoint
+- Verified widget uses safe DOM construction (no innerHTML)
 
 ---
 

@@ -2,6 +2,8 @@ import { createClient } from "@/lib/supabase/server";
 import { ProjectCard } from "@/components/dashboard/ProjectCard";
 import { CreateProjectDialog } from "@/components/dashboard/CreateProjectDialog";
 
+export const metadata = { title: "Projects" };
+
 export default async function ProjectsPage() {
   const supabase = await createClient();
 
