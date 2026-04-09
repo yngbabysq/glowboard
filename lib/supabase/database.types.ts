@@ -30,6 +30,7 @@ export interface Database {
           avatar_url?: string | null;
           updated_at?: string;
         };
+        Relationships: [];
       };
       projects: {
         Row: {
@@ -65,6 +66,15 @@ export interface Database {
           thank_you_message?: string;
           updated_at?: string;
         };
+        Relationships: [
+          {
+            foreignKeyName: "projects_user_id_fkey";
+            columns: ["user_id"];
+            isOneToOne: false;
+            referencedRelation: "profiles";
+            referencedColumns: ["id"];
+          },
+        ];
       };
       testimonials: {
         Row: {
@@ -97,6 +107,15 @@ export interface Database {
           text?: string;
           status?: "pending" | "approved" | "rejected";
         };
+        Relationships: [
+          {
+            foreignKeyName: "testimonials_project_id_fkey";
+            columns: ["project_id"];
+            isOneToOne: false;
+            referencedRelation: "projects";
+            referencedColumns: ["id"];
+          },
+        ];
       };
       subscriptions: {
         Row: {
@@ -129,8 +148,21 @@ export interface Database {
           current_period_end?: string | null;
           updated_at?: string;
         };
+        Relationships: [
+          {
+            foreignKeyName: "subscriptions_user_id_fkey";
+            columns: ["user_id"];
+            isOneToOne: false;
+            referencedRelation: "profiles";
+            referencedColumns: ["id"];
+          },
+        ];
       };
     };
+    Views: Record<string, never>;
+    Functions: Record<string, never>;
+    Enums: Record<string, never>;
+    CompositeTypes: Record<string, never>;
   };
 }
 
