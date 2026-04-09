@@ -13,12 +13,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-### Planned — Phase 2: Dashboard
-- Dashboard layout with sidebar
-- Projects list and management
-- Testimonial approval workflow (approve / reject / delete)
-- Project settings (widget customization, embed code)
-
 ### Planned — Phase 3: Collection
 - Public testimonial collection form (branded, mobile-friendly)
 - Email notification on new testimonial (Resend)
@@ -37,6 +31,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Loading / error / empty states
 - SEO metadata
 - Security hardening
+
+---
+
+## [0.3.0] - 2026-04-09
+
+### Added
+- Dashboard layout with responsive sidebar and mobile hamburger navigation
+- Projects list page with testimonial counts, pending badges, create dialog
+- Project detail page with testimonial management (approve/reject/delete)
+- Tabs filtering: All, Pending, Approved, Rejected
+- Project settings: widget style picker, color picker, thank you message
+- Embed code section with copy-to-clipboard
+- Danger zone with type-to-confirm project deletion
+- Sonner toast notifications throughout dashboard
 
 ---
 
