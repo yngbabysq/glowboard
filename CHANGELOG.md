@@ -13,10 +13,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-### Planned — Phase 3: Collection
-- Public testimonial collection form (branded, mobile-friendly)
-- Email notification on new testimonial (Resend)
-
 ### Planned — Phase 4: Embed Widget
 - JSON API for widget with CORS + caching
 - Standalone vanilla JS widget (<15KB, Shadow DOM)
@@ -31,6 +27,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Loading / error / empty states
 - SEO metadata
 - Security hardening
+
+---
+
+## [0.4.0] - 2026-04-09
+
+### Added
+- Public testimonial collection form at /collect/[publicId]
+- Interactive star rating with hover effects
+- Zod validation with inline error messages
+- Thank you screen with project branding after submission
+- Free plan testimonial limit enforcement (15 max)
+- "Powered by Glowboard" footer
 
 ---
 
