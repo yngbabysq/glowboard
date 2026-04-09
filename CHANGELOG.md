@@ -13,12 +13,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-### Planned — Phase 1: Foundation
-- Next.js 16 + Tailwind CSS v4 + shadcn/ui project scaffold
-- Supabase database schema (profiles, projects, testimonials, subscriptions)
-- Row Level Security policies
-- Google OAuth + magic link authentication
-
 ### Planned — Phase 2: Dashboard
 - Dashboard layout with sidebar
 - Projects list and management
@@ -43,6 +37,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Loading / error / empty states
 - SEO metadata
 - Security hardening
+
+---
+
+## [0.2.0] - 2026-04-09
+
+### Added
+- Next.js 16.2.3 + Tailwind CSS v4.2.2 + shadcn/ui project scaffold
+- 12 shadcn/ui components (button, card, input, textarea, dialog, dropdown-menu, avatar, badge, tabs, sonner, separator, skeleton)
+- Indigo design system with light/dark mode (oklch color tokens)
+- Supabase database schema: profiles, projects, testimonials, subscriptions
+- 5 SQL migrations with Row Level Security policies
+- Auto-create profile + free subscription trigger on signup
+- 4 Supabase clients: server (SSR), browser, proxy, admin
+- Full TypeScript types for all database tables
+- Login page with Google OAuth + magic link (dark atmospheric UI)
+- Auth callback route handler
+- Proxy (Next.js 16) protecting dashboard routes
+- Server actions: createProject, ensureFirstProject, approve/reject/delete testimonials
+- Zod validation schemas for project CRUD
 
 ---
 
