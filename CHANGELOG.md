@@ -13,15 +13,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-### Planned — Phase 5: Payments
-- Stripe Checkout + Customer Portal integration
-- Plan limits enforcement (Free / Pro / Business)
-
 ### Planned — Phase 6: Polish
 - Landing page
 - Loading / error / empty states
 - SEO metadata
 - Security hardening
+
+---
+
+## [0.6.0] - 2026-04-09
+
+### Added
+- Stripe Checkout integration for Pro ($19/mo) and Business ($49/mo) plans
+- Stripe Customer Portal for subscription management (upgrade/downgrade/cancel)
+- Stripe webhook handler with signature verification (checkout.session.completed, subscription.updated, subscription.deleted, invoice.payment_failed)
+- Account page with current plan display, upgrade cards, and manage billing button
+- Centralized plan limits utility (`getPlanLimits`) for Free/Pro/Business tiers
+- Plan limit enforcement in project creation and testimonial collection server actions
 
 ---
 

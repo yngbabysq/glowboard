@@ -2,6 +2,7 @@
 
 import { createTestimonialSchema } from "@/lib/validations/testimonial";
 import { createAdminClient } from "@/lib/supabase/admin";
+import { getPlanLimits } from "@/lib/utils/plan-limits";
 
 export async function submitTestimonial(data: {
   customerName: string;
@@ -35,13 +36,14 @@ export async function submitTestimonial(data: {
     .eq("user_id", project.user_id)
     .single();
 
-  if (subscription?.plan === "free") {
+  const limits = getPlanLimits(subscription?.plan ?? "free");
+  if (limits.maxTestimonials !== Infinity) {
     const { count } = await supabase
       .from("testimonials")
       .select("*", { count: "exact", head: true })
       .eq("project_id", project.id);
 
-    if ((count ?? 0) >= 15) {
+    if ((count ?? 0) >= limits.maxTestimonials) {
       return { error: "This project has reached its testimonial limit." };
     }
   }

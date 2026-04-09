@@ -7,6 +7,7 @@ import {
   createProjectSchema,
   updateProjectSettingsSchema,
 } from "@/lib/validations/project";
+import { getPlanLimits } from "@/lib/utils/plan-limits";
 
 export async function ensureFirstProject(userId: string) {
   const supabase = await createClient();
@@ -47,14 +48,15 @@ export async function createProject(formData: FormData) {
     .eq("user_id", user.id)
     .single();
 
-  if (subscription?.plan === "free") {
+  const limits = getPlanLimits(subscription?.plan ?? "free");
+  if (limits.maxProjects !== Infinity) {
     const { count } = await supabase
       .from("projects")
       .select("*", { count: "exact", head: true })
       .eq("user_id", user.id);
 
-    if ((count ?? 0) >= 1) {
-      return { error: "Free plan is limited to 1 project. Upgrade to Pro for unlimited projects." };
+    if ((count ?? 0) >= limits.maxProjects) {
+      return { error: `Your plan is limited to ${limits.maxProjects} project${limits.maxProjects === 1 ? "" : "s"}. Upgrade for more.` };
     }
   }
 
