@@ -13,11 +13,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-### Planned — Phase 4: Embed Widget
-- JSON API for widget with CORS + caching
-- Standalone vanilla JS widget (<15KB, Shadow DOM)
-- Styles: Carousel, Grid, Wall, Minimal
-
 ### Planned — Phase 5: Payments
 - Stripe Checkout + Customer Portal integration
 - Plan limits enforcement (Free / Pro / Business)
@@ -27,6 +22,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Loading / error / empty states
 - SEO metadata
 - Security hardening
+
+---
+
+## [0.5.0] - 2026-04-09
+
+### Added
+- Embed API endpoint GET /api/embed/[publicId] with CORS and caching
+- Standalone vanilla JS embed widget (7.7KB, Shadow DOM isolated)
+- 4 widget display styles: Carousel, Grid, Wall (masonry), Minimal
+- Dark mode support via prefers-color-scheme
+- "Powered by Glowboard" branding for free plan widgets
 
 ---
 
